@@ -23,7 +23,7 @@ st.sidebar.header("Specify Input Parameters")
 
 
 #import data
-df = pd.read_excel('C:/Users/Deeptarka.Roy/Desktop/A.xlsx')
+df = pd.read_excel('A.xlsx')
 x = df[["D","LD","fc","fyl","fyt","pl","pt","Ny"]]
 
 
