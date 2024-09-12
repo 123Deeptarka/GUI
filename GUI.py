@@ -11,9 +11,6 @@ import streamlit as st
 import numpy as np 
 from xgboost import XGBRFRegressor
 import matplotlib.pyplot as plt
-#rom tensorflow.keras.models import Sequential
-#rom tensorflow.keras.layers import Conv1D,Activation,MaxPooling1D,Dense,Flatten
-#mport keras 
 
 
 
@@ -77,10 +74,7 @@ new_column_names = {
 # Rename the columns
 Data.rename(columns=new_column_names, inplace=True)
 
-#style = [
-#   dict(selector="th", props=[("font-size", "20px"), ("font-weight", "bold"), ("color", "#484848")]),
-#    dict(selector="td", props=[("font-size", "16px"),("font-weight", "bold") ,("color", "#484848")])
-#]
+
 style = [
     dict(selector="th", props=[("font-size", "20px"), ("font-weight", "bold"), ("color", "#484848"), ("border", "4px solid #484848")]),
     dict(selector="td", props=[("font-size", "16px"), ("font-weight", "bold"), ("color", "#484848"), ("border", "4px solid #484848")]),
@@ -148,13 +142,7 @@ P_DS=P[["DS1","DS2","DS3","DS4"]]
 P_F=P[["F1 (kN)","F2 (kN)","F3 (kN)","F4 (kN)"]]
 #P_DS_display = P_DS.reset_index(drop=True)
 #st.write(P_DS)
-#styles = [
- #   dict(selector="th", props=[("font-size", "20px"), ("font-weight", "bold"), ("color", "#484848")]),
- #   dict(selector="td", props=[("font-size", "16px"),("font-weight", "bold") ,("color", "#484848")])
-#]
-# Apply styling to dataframe
-#styled_df = P_DS.style.set_table_styles(styles)
-#st.table(styled_df)
+
 
 # Title
 #st.write("Drift Ratio")
@@ -166,10 +154,7 @@ st.markdown("<h1 style='text-align: center; font-size: 20px; font-weight: bold; 
 #st.write("DS1, DS2, DS3, DS4")
 
 # Styling
-#styles = [
-   # dict(selector="th", props=[("font-size", "20px"), ("font-weight", "bold"), ("color", "#484848")]),
-   # dict(selector="td", props=[("font-size", "16px"), ("font-weight", "bold")    ,("color", "#484848")])
-#]
+
 styles = [
     dict(selector="th", props=[("font-size", "20px"), ("font-weight", "bold"), ("color", "#484848"), ("border", "4px solid #484848")]),
     dict(selector="td", props=[("font-size", "16px"), ("font-weight", "bold"), ("color", "#484848"), ("border", "4px solid #484848")]),
@@ -179,10 +164,7 @@ styles = [
 # Apply styling to dataframe
 styled_df = P_DS.style.set_table_styles(styles).format("{:.2f}").hide(axis="index")
 
-#html = styled_df.to_html(index=False)
-#st.write(html,unsafe_allow_html=True)
-# Display the table
-#st.table(styled_df)
+
 P_DS_no_index = P_DS.round(2).reset_index(drop=True)
 html = P_DS_no_index.to_html(index=False)
 
@@ -240,18 +222,12 @@ ax.plot(a,b,label="Predicted Pushover Curve",marker="o")
 #ax.plot(a1,b1,label="Simulated Pushover Curve",marker="o")
 ax.set_xlabel("Drift Ratio (%)")
 ax.set_ylabel("Force (kN)")
-#ax.set_title("Predicted VS Simulated Pushover Curves")
-#ax.legend()
-#ax.show()
-#st.pyplot(fig)
+
 # Label the points
 for i in range(1, 5):  # We start from 1 to skip the (0,0) point
     ax.annotate(f'DS{i}', (a[i], b[i]), textcoords="offset points", xytext=(5,-20), ha='center')
 
-# Add grid for better readability
-#ax.grid(True, linestyle='--', alpha=0.7)
 
-# Use tight layout to prevent clipping of labels
 plt.tight_layout()
 
 st.pyplot(fig, use_container_width=True)
