@@ -23,7 +23,16 @@ st.sidebar.header("Specify Input Parameters")
 
 
 #import data
-df = pd.read_excel('A.xlsx')
+@st.cache_data
+def load_data():
+    # Load or process data here
+    df = pd.read_excel('A.xlsx')
+    return df
+
+# Use the cached function
+df = load_data()
+
+#df = pd.read_excel('A.xlsx')
 x = df[["D","LD","fc","fyl","fyt","pl","pt","Ny"]]
 
 
