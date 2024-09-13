@@ -21,21 +21,10 @@ st.markdown('<h1 style="font-size: 40px; font-weight: bold;"> Pushover Curve and
 
 st.sidebar.header("Specify Input Parameters")
 
-@st.cache_data
-def load_data():
-    # Load or process data here
-    df = pd.read_excel('A.xlsx')
-    return df
-
-# Use the cached function
-df = load_data()
-
-#import data
 
 
 
-
-#df = pd.read_excel('A.xlsx')
+df = pd.read_excel('A.xlsx')
 x = df[["D","LD","fc","fyl","fyt","pl","pt","Ny"]]
 
 
